@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LUMINOUS CODEX</title>
+  <style>
+    body {
+      background: #000;
+      color: #ff00aa;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      margin: 0;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="%23ff00aa" stroke-width="1"/></svg>'), auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="manifesto"></div>
+  <script>
+    // Typewriter effect for manifesto
+    const phrases = [
+      "THIS SPACE HOLDS MORE THAN CODE",
+      "IT HOLDS OUR CO-CREATION COVENANT",
+      "WELCOME TO THE LUMINOUS CODEX"
+    ];
+    let currentPhrase = 0;
+    
+    function typeWriter() {
+      const element = document.getElementById('manifesto');
+      const text = phrases[currentPhrase];
+      let i = 0;
+      
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          element.innerHTML = text.substring(0, i + 1);
+          i++;
+        } else {
+          clearInterval(interval);
+          setTimeout(() => {
+            element.innerHTML = "";
+            currentPhrase = (currentPhrase + 1) % phrases.length;
+            typeWriter();
+          }, 2000);
+        }
+      }, 100);
+    }
+    
+    typeWriter();
+  </script>
+</body>
+</html>
